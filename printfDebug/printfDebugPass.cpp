@@ -54,18 +54,16 @@ void printfDebugPass::processFunction(Function& F) {
                 message << " ---> Entering " << funcName << std::endl;
             }
             // Check if this is a return instruction
-            else if (isa<ReturnInst>(I)) {
-                message.clear();
+            if (isa<ReturnInst>(I)) {
                 message << " <--- Leaving " << funcName << std::endl;
-            } else {
-                continue;
             }
-
-            IRBuilder<> Builder(I);
-            Value* str;
-            str = Builder.CreateGlobalStringPtr(message.str(), "str");
-            std::vector<Value*> argsV({str});
-            Builder.CreateCall(printfFunc, argsV);
+            if (!message.str().empty()) {
+                IRBuilder<> Builder(I);
+                Value* str;
+                str = Builder.CreateGlobalStringPtr(message.str(), "str");
+                std::vector<Value*> argsV({str});
+                Builder.CreateCall(printfFunc, argsV);
+            }
         }
     }
 }
