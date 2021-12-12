@@ -15,30 +15,6 @@
 
 using namespace llvm;
 
-// std::array<char const*, 4> lookup = {
-//     {"The demangling operation succeeded", "A memory allocation failure occurred",
-//      "mangled_name is not a valid name under the C++ ABI mangling rules",
-//      "One of the arguments is invalid"}};
-
-// std::string demangle(const std::string& Name) {
-//     if (Name.rfind("_Z", 0) != 0) {
-//         return Name;
-//     }
-//     int status;
-//     std::size_t size = Name.length() + 1;
-//     char* buffer = static_cast<char*>(std::malloc(size));
-//     char* demangled_name = NULL;
-//     char* cstr_name = new char[size];
-//     strcpy(cstr_name, Name.c_str());
-//     demangled_name = abi::__cxa_demangle(cstr_name, buffer, &size, &status);
-
-//     if (!demangled_name) {
-//         return std::string();
-//     }
-//     std::string s(demangled_name);
-//     return s;
-// }
-
 namespace {
 
     struct printfDebugPass : public FunctionPass {
