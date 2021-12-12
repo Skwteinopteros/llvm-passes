@@ -6,7 +6,7 @@ LLVM_VERSION := 12
 
 all: clean build
 
-build_pass: ;@echo Building llvm-pass...
+build_passes: ;@echo Building llvm-pass...
 	cmake -S . -B out/build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 		-DCMAKE_C_COMPILER=clang-$(LLVM_VERSION) \
 		-DCMAKE_CXX_COMPILER=clang++-$(LLVM_VERSION)
@@ -14,7 +14,7 @@ build_pass: ;@echo Building llvm-pass...
 	echo Done!
 	echo
 
-build: clean build_pass
+build: clean build_passes
 
 format: ;
 	find . -type f \( -name "*.h" -o -name "*.cpp" -o -name "*.c" -o -name "*.hpp" -o -name "*.proto" \) \
