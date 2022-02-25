@@ -20,3 +20,4 @@ message(LLVM_DEFINITIONS_LIST="${LLVM_DEFINITIONS_LIST}")
 message(LLVM_INCLUDE_DIRS="${LLVM_INCLUDE_DIRS}")
 
 add_subdirectory(printfDebug)
+add_subdirectory(symbolDump)
